@@ -6,7 +6,7 @@ This PHP class can substitute the Google Distance Matrix to calculate the distan
 
 First you need to include the class, after that you can create the instance all get the distance between the points. See the example:
 
-```
+```php
 <?php
 include "worldDistance.php";
 
@@ -18,7 +18,7 @@ print $distance->getDistance(); // KM is default
 
 If you want the measure in miles, you can do this:
 
-```
+```php
 <?php
 include "worldDistance.php";
 
