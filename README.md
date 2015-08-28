@@ -13,7 +13,17 @@ After the installation is complete, you can load the class and start using it.
 ```php
 <?php
 
+use RFHaversini\Distance;
+
 $inKilometers = Distance::toKilometers(30.261699, -97.738967, 29.869229, -97.959595);
 $inMiles      = Distance::toMiles(30.261699, -97.738967, 29.869229, -97.959595);
 
 ```
+
+## Running tests
+
+`php composer.phar test`
+
+This will run the tests and generate a coverage folder inside tests.
+
+XDebug is required for test coverage!
