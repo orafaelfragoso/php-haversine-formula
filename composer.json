@@ -1,0 +1,28 @@
+{
+    "name": "rafaelfragoso/haversini-formula",
+    "description": "This PHP class can replace the Google Distance Matrix to calculate the distance between two points using latitude and longitude. It will prevent you to do massive requests to Google servers and enhance your service performance.",
+    "version": "1.0.0",
+    "homepage": "https://github.com/rafaelfragosom/php-haversine-formula",
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "require-dev": {
+      "phpunit/phpunit": "4.8.*" 
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rafael Fragoso",
+            "email": "rafaelfragosom@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "scripts": {
+      "test": "./vendor/phpunit/phpunit/phpunit --colors=always --coverage-html tests/coverage tests/DistanceTest"
+    },
+    "autoload": {
+      "psr-0": {
+        "RFHaversini": "src/"
+      }
+    }
+}
