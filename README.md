@@ -1,4 +1,4 @@
-#World Distance
+# World Distance
 
 This PHP class can replace the Google Distance Matrix to calculate the distance between two points using latitude and longitude. It will prevent you to do massive requests to Google's API and enhance your service's performance.
 
