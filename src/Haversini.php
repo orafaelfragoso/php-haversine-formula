@@ -1,29 +1,59 @@
-<?php 
+<?php
 
 namespace Haversini;
 
-class Distance {
+use UnitConverter\UnitConverter;
 
-	private static function calculate($fromLat, $fromLon, $toLat, $toLon, $precision = 0) {
-		$earth_radius = 6371;
+class Haversini
+{
 
-		$dLat = deg2rad($toLat - $fromLat);
-		$dLon = deg2rad($toLon - $fromLon);
-		
-		$a = sin($dLat/2) * sin($dLat/2) + cos(deg2rad($fromLat)) * cos(deg2rad($toLat)) * sin($dLon/2) * sin($dLon/2);
-		$c = 2 * asin(sqrt($a));
-		$d = $earth_radius * $c;
-		
-		return round($d, $precision);
-	}
-  
-  public static function toKilometers($fromLat, $fromLon, $toLat, $toLon, $precision = 0) {
-	  return self::calculate($fromLat, $fromLon, $toLat, $toLon);
-	}
+    /**
+     * @var int
+     */
+    protected static $earth_radius = 6371000;
 
-  public static function toMiles($fromLat, $fromLon, $toLat, $toLon, $precision = 0) {
-    $distance = self::calculate($fromLat, $fromLon, $toLat, $toLon, $precision);
-	  return round($distance * 0.621371192, $precision);
-	}
+    /**
+     * @param float $fromLatitude
+     * @param float $fromLongitude
+     * @param float $toLatitude
+     * @param float $toLongitude
+     * @param string $unit
+     *
+     * @return float
+     */
+    public static function calculate(
+        float $fromLatitude,
+        float $fromLongitude,
+        float $toLatitude,
+        float $toLongitude,
+        string $unit = 'km'
+    ): float {
+        $latitudeRadian = deg2rad($toLatitude - $fromLatitude);
+        $longitudeRadian = deg2rad($toLongitude - $fromLongitude);
 
+        $a = sin($latitudeRadian / 2)
+            * sin($latitudeRadian / 2)
+            + cos(deg2rad($fromLatitude))
+            * cos(deg2rad($toLatitude))
+            * sin($longitudeRadian / 2)
+            * sin($longitudeRadian / 2);
+
+        return static::converter(
+            static::$earth_radius * (2 * asin(sqrt($a))), $unit
+        );
+    }
+
+    /**
+     * @param float $distance
+     * @param string $unit
+     *
+     * @return float
+     */
+    protected static function converter(float $distance, string $unit): float
+    {
+        return (float) (UnitConverter::default())
+            ->convert($distance)
+            ->from('m')
+            ->to($unit);
+    }
 }
