@@ -6,24 +6,31 @@ This PHP class can replace the Google Distance Matrix to calculate the distance 
 
 Install the library via Composer or clone the repo:
 
-`php composer.phar install rafaelfragoso/haversini-formula`
+`composer install rafaelfragoso/haversini-formula`
 
 After the installation is complete, you can load the class and start using it.
 
 ```php
 <?php
 
-use RFHaversini\Distance;
+use Haversini\Haversini;
 
-$inKilometers = Distance::toKilometers(30.261699, -97.738967, 29.869229, -97.959595);
-$inMiles      = Distance::toMiles(30.261699, -97.738967, 29.869229, -97.959595);
-
+/*
+ * Calculate distance from Rio de Janeiro to São Paulo
+ * Rio: -22.906847, -43.172896
+ * São Paulo: -23.550520, -46.633309
+ */
+Haversini::calculate(
+    -22.906847,
+    -43.172896,
+    -23.550520,
+    -46.633309,
+    'mi' // Output length unit
+);
 ```
 
 ## Running tests
 
-`php composer.phar test`
-
-This will run the tests and generate a coverage folder inside tests.
+`make test` or `make test-coverage`
 
 XDebug is required for test coverage!
