@@ -34,3 +34,14 @@ Haversini::calculate(
 `make test` or `make test-coverage`
 
 XDebug is required for test coverage!
+
+## Authors
+
+- [Rafael Fragoso](https://github.com/ofragoso) - *Initial work*
+- [Leonardo Carmo](https://github.com/leocarmo) - *Version 2*
+
+See also the list of [contributors](https://github.com/orafaelfragoso/php-haversine-formula/graphs/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
