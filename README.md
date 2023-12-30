@@ -6,7 +6,7 @@ Calculates de distance between two geocode points 📌🗺
 
 Install the library via Composer or clone the repo:
 
-`composer install rafaelfragoso/haversini-formula`
+`composer require rafaelfragoso/haversini-formula`
 
 After the installation is complete, you can load the class and start using it.
 
